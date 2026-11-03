@@ -132,6 +132,7 @@ class Report:
     tool: str
     version: str
     question: str = ""
+    code_names: dict[str, str] = field(default_factory=dict)
     readiness: list[Finding] = field(default_factory=list)
     codebook: list[Finding] = field(default_factory=list)
     annotations: list[VerifiedAnnotation] = field(default_factory=list)

@@ -487,6 +487,7 @@ def analyze(
         tool=TOOL_NAME,
         version=__version__,
         question=study.question,
+        code_names={c.id: c.name for c in study.codebook if c.id},
         readiness=check_transcript(study.transcript, thresholds),
         codebook=check_codebook(study.codebook, thresholds),
         annotations=verified,
