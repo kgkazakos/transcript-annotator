@@ -84,3 +84,11 @@ def test_run_rejects_export_as_study(files):
     path.write_text(invoke("export", files["study"], "--no-llm"))
     r = CliRunner().invoke(main, ["run", str(path), "--no-llm"])
     assert r.exit_code != 0
+
+
+def test_threshold_options():
+    from pathlib import Path
+    ex = str(Path(__file__).resolve().parent.parent / "examples" / "thin-transcript.json")
+    assert "INTERVIEWER_HEAVY" in invoke("check", ex)
+    assert "INTERVIEWER_HEAVY" not in invoke("check", ex, "--interviewer-share", "0.99")
+    assert "SEG_LONG" not in invoke("run", ex, "--no-llm", "--long-segment", "1000")

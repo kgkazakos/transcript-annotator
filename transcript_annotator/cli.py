@@ -22,7 +22,9 @@ from .io import (
     report_from_export,
     to_export,
 )
-from .models import AI_PARADIGM, AI_PARADIGM_RATIONALE, TOOL_NAME
+from .models import AI_PARADIGM, AI_PARADIGM_RATIONALE, TOOL_NAME, Thresholds
+
+_D = Thresholds()
 
 _FILE = click.Path(exists=True, dir_okay=False)
 
@@ -45,7 +47,29 @@ def _emit(payload: dict[str, Any], output: Optional[str]) -> None:
         sys.stdout.write(text + "\n")
 
 
+def _threshold_options(f):
+    f = click.option("--thin-reasoning", type=click.IntRange(min=0), default=_D.thin_reasoning_words,
+                     show_default=True, help="REASONING_THIN below this many words.")(f)
+    f = click.option("--definition-overlap", type=click.FloatRange(0, 1), default=_D.definition_overlap,
+                     show_default=True, help="CODE_DEFINITION_OVERLAP at or above this Jaccard overlap.")(f)
+    f = click.option("--long-segment", type=click.IntRange(min=1), default=_D.long_segment_words,
+                     show_default=True, help="SEG_LONG above this many words.")(f)
+    f = click.option("--interviewer-share", type=click.FloatRange(0, 1), default=_D.interviewer_share,
+                     show_default=True, help="INTERVIEWER_HEAVY above this share of words.")(f)
+    return f
+
+
+def _thresholds(kw: dict[str, Any]) -> Thresholds:
+    return Thresholds(
+        interviewer_share=kw.pop("interviewer_share"),
+        long_segment_words=kw.pop("long_segment"),
+        definition_overlap=kw.pop("definition_overlap"),
+        thin_reasoning_words=kw.pop("thin_reasoning"),
+    )
+
+
 def _run_options(f):
+    f = _threshold_options(f)
     f = click.option("--batch-size", type=click.IntRange(min=1), default=None,
                      help="Segments per model call (default 20).")(f)
     f = click.option("--reviews", type=_FILE, default=None, help="Researcher review decisions to check.")(f)
@@ -56,13 +80,14 @@ def _run_options(f):
     return f
 
 
-def _report(path, no_llm, model, annotations, reviews, batch_size):
+def _report(path, no_llm, model, annotations, reviews, batch_size, **kw):
     return build_report(
         _study(path, annotations),
         no_llm=no_llm,
         model=model,
         batch_size=batch_size,
         reviews=load_reviews(reviews) if reviews else None,
+        thresholds=_thresholds(kw),
     )
 
 
@@ -76,9 +101,9 @@ def main() -> None:
 @click.argument("path", type=_FILE)
 @_run_options
 @click.option("--format", "fmt", type=click.Choice(["text", "json"]), default="text")
-def run(path, no_llm, model, annotations, reviews, batch_size, fmt) -> None:
+def run(path, no_llm, model, annotations, reviews, batch_size, fmt, **kw) -> None:
     """Annotate a study and verify every annotation."""
-    report = _report(path, no_llm, model, annotations, reviews, batch_size)
+    report = _report(path, no_llm, model, annotations, reviews, batch_size, **kw)
     if fmt == "json":
         _emit(to_export(report), None)
     else:
@@ -89,16 +114,17 @@ def run(path, no_llm, model, annotations, reviews, batch_size, fmt) -> None:
 @click.argument("path", type=_FILE)
 @_run_options
 @click.option("-o", "--output", type=click.Path(dir_okay=False), default=None)
-def export(path, no_llm, model, annotations, reviews, batch_size, output) -> None:
+def export(path, no_llm, model, annotations, reviews, batch_size, output, **kw) -> None:
     """Write the versioned JSON export (the run file that `review` and `agreement` read)."""
-    _emit(to_export(_report(path, no_llm, model, annotations, reviews, batch_size)), output)
+    _emit(to_export(_report(path, no_llm, model, annotations, reviews, batch_size, **kw)), output)
 
 
 @main.command()
 @click.argument("path", type=_FILE)
-def check(path: str) -> None:
+@_threshold_options
+def check(path: str, **kw) -> None:
     """Transcript readiness and codebook checks only. Never calls a model."""
-    click.echo(render_check(analyze(load_input(path))))
+    click.echo(render_check(analyze(load_input(path), thresholds=_thresholds(kw))))
 
 
 @main.command()
