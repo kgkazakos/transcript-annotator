@@ -70,8 +70,8 @@ def _tokens(text: str) -> set[str]:
 def normalise(text: str) -> str:
     """Normalise for verbatim matching: unicode form, quotes and dashes, case, whitespace."""
     t = unicodedata.normalize("NFKC", text)
-    t = t.translate(str.maketrans({"‘": "'", "’": "'", "“": '"', "”": '"',
-                                   "–": "-", "—": "-"}))
+    t = t.translate(str.maketrans({"\u2018": "'", "\u2019": "'", "\u201c": '"', "\u201d": '"',
+                                   "\u2013": "-", "\u2014": "-"}))
     return re.sub(r"\s+", " ", t).strip().lower()
 
 
