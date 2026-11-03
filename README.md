@@ -21,7 +21,7 @@ Read the counter-readings first. A code whose counter-reading is as strong as it
 
 ## Reasoning per code
 
-Qualitative coding goes wrong quietly. A list of labels looks the same whether the coder applied the codebook's criteria, read the segment in context, or matched on a keyword. Slow annotation borrows from codebook thematic analysis and analytic memoing: the reasons are written next to the code, in a fixed shape, so they can be checked and argued with.
+Slow annotation borrows from codebook thematic analysis and analytic memoing: the reasons are written next to the code, in a fixed shape, so they can be checked and argued with.
 
 - **Your codebook, always.** The tool ships no codes. The model may only apply codes in your codebook; a code it invents is kept, flagged `ANN_UNKNOWN_CODE` and never added. New codes are your call.
 - **Quoted, not paraphrased.** Every span must appear in its segment (case, whitespace and curly quotes are normalised). A span that does not is `unanchored`, and so is an annotation on a segment or code that does not exist.
@@ -32,9 +32,9 @@ Qualitative coding goes wrong quietly. A list of labels looks the same whether t
 
 ## AI paradigm
 
-LLM (reasoning).
+LLM (reasoning / test-time deliberation).
 
-Qualitative coding fails quietly when codes arrive without their reasons: a list of labels hides whether the coder applied the codebook's criteria, read the segment in context, or matched on a keyword. Slow annotation asks a reasoning model to spend deliberate compute on each segment and to show its work per code: the exact span, the codebook criterion it meets, the exclusion criteria it considered, a counter-reading and the alternative codes it rejected. That is interpretive reasoning against a researcher-authored codebook, not classification, so a reasoning model fits. The deterministic layer checks every annotation against the transcript and the codebook, and the researcher reviews the reasoning, not just the codes.
+Coding against a codebook is interpretive work: deciding whether a span meets a criterion, whether an exclusion rules it out, and what the strongest other reading would be. A reasoning model spending deliberate test-time compute on each segment can write that work down per code, and the written reasoning is what the researcher reviews. The deterministic layer keeps it honest: it checks every span, criterion and exclusion against the transcript and the codebook, and drops any confidence the model claims. The researcher reviews the reasoning, not just the codes.
 
 Run `tan paradigm` to print this at the tool level.
 

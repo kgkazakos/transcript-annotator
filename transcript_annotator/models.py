@@ -8,17 +8,15 @@ from typing import Any, Optional
 TOOL_NAME = "transcript-annotator"
 EXPORT_SCHEMA = "cpr.tan.export/1"
 
-AI_PARADIGM = "LLM (reasoning)"
+AI_PARADIGM = "LLM (reasoning / test-time deliberation)"
 AI_PARADIGM_RATIONALE = (
-    "Qualitative coding fails quietly when codes arrive without their reasons: a list of "
-    "labels hides whether the coder applied the codebook's criteria, read the segment in "
-    "context, or matched on a keyword. Slow annotation asks a reasoning model to spend "
-    "deliberate compute on each segment and to show its work per code: the exact span, the "
-    "codebook criterion it meets, the exclusion criteria it considered, a counter-reading and "
-    "the alternative codes it rejected. That is interpretive reasoning against a "
-    "researcher-authored codebook, not classification, so a reasoning model fits. The "
-    "deterministic layer checks every annotation against the transcript and the codebook, "
-    "and the researcher reviews the reasoning, not just the codes."
+    "Coding against a codebook is interpretive work: deciding whether a span meets a "
+    "criterion, whether an exclusion rules it out, and what the strongest other reading "
+    "would be. A reasoning model spending deliberate test-time compute on each segment can "
+    "write that work down per code, and the written reasoning is what the researcher "
+    "reviews. The deterministic layer keeps it honest: it checks every span, criterion and "
+    "exclusion against the transcript and the codebook, and drops any confidence the model "
+    "claims. The researcher reviews the reasoning, not just the codes."
 )
 
 SEVERITIES = ("high", "medium", "low")
