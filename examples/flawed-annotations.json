@@ -1,0 +1,407 @@
+{
+  "question": "How do first-time workspace admins make sense of initial setup?",
+  "codebook": [
+    {
+      "id": "NEXT",
+      "name": "Unclear next step",
+      "definition": "The participant describes not knowing which action the product expected of them next.",
+      "include": [
+        {
+          "id": "NEXT.i1",
+          "text": "Says they did not know what to do next or where to go"
+        },
+        {
+          "id": "NEXT.i2",
+          "text": "Describes searching the interface for the next action"
+        }
+      ],
+      "exclude": [
+        {
+          "id": "NEXT.x1",
+          "text": "Knew the next step but could not take it for lack of access (use ACCESS)"
+        },
+        {
+          "id": "NEXT.x2",
+          "text": "General comment on design with no moment of not knowing"
+        }
+      ]
+    },
+    {
+      "id": "ACCESS",
+      "name": "Waiting on access",
+      "definition": "Setup pauses because the participant needs another person to grant a right or approval.",
+      "include": [
+        {
+          "id": "ACCESS.i1",
+          "text": "Names a person or team they had to wait for"
+        },
+        {
+          "id": "ACCESS.i2",
+          "text": "Describes a request for rights, licences or approval"
+        }
+      ],
+      "exclude": [
+        {
+          "id": "ACCESS.x1",
+          "text": "Has the rights but cannot find the setting (use NEXT)"
+        }
+      ]
+    },
+    {
+      "id": "WORKAROUND",
+      "name": "Workaround",
+      "definition": "The participant reaches the goal by a route the product did not offer for it.",
+      "include": [
+        {
+          "id": "WORKAROUND.i1",
+          "text": "Describes an improvised route, tool or manual step"
+        }
+      ],
+      "exclude": [
+        {
+          "id": "WORKAROUND.x1",
+          "text": "Uses a documented feature as documented"
+        }
+      ]
+    },
+    {
+      "id": "PEER",
+      "name": "Learning from a colleague",
+      "definition": "The participant learns how setup works from another person rather than from the product.",
+      "include": [
+        {
+          "id": "PEER.i1",
+          "text": "Mentions asking, watching or copying a colleague"
+        }
+      ],
+      "exclude": [
+        {
+          "id": "PEER.x1",
+          "text": "Contact with vendor support (not a colleague)"
+        }
+      ]
+    }
+  ],
+  "transcript": [
+    {
+      "id": "s1",
+      "speaker": "INT",
+      "role": "interviewer",
+      "text": "Can you both walk me through the first hour after you created the workspace?"
+    },
+    {
+      "id": "s2",
+      "speaker": "P1",
+      "role": "participant",
+      "text": "The welcome screen was nice, but once it closed I was on an empty dashboard and I just did not know where to go. I clicked around the left menu for a while looking for something that said setup."
+    },
+    {
+      "id": "s3",
+      "speaker": "P2",
+      "role": "participant",
+      "text": "For me it was the user import. I knew exactly where it was, the button was greyed out, and I had to wait two days for our IT team to give me the admin licence."
+    },
+    {
+      "id": "s4",
+      "speaker": "INT",
+      "role": "interviewer",
+      "text": "What did you do in those two days?"
+    },
+    {
+      "id": "s5",
+      "speaker": "P2",
+      "role": "participant",
+      "text": "I kept a spreadsheet of everyone who needed an account and pasted the emails in one by one once the licence came through. There is a bulk upload somewhere but I never found it."
+    },
+    {
+      "id": "s6",
+      "speaker": "P1",
+      "role": "participant",
+      "text": "Honestly the thing that unblocked me was sitting next to Dana from finance, who had set up her team the month before. I watched her do it and copied her settings."
+    },
+    {
+      "id": "s7",
+      "speaker": "INT",
+      "role": "interviewer",
+      "text": "Did you look at the help centre at any point?"
+    },
+    {
+      "id": "s8",
+      "speaker": "P1",
+      "role": "participant",
+      "text": "I opened it once. The articles assume you already know what a space and a project are, so it did not help much at that stage."
+    },
+    {
+      "id": "s9",
+      "speaker": "P2",
+      "role": "participant",
+      "text": "I raised a ticket with the vendor about the permissions page and they answered the same day, which was good."
+    },
+    {
+      "id": "s10",
+      "speaker": "P1",
+      "role": "participant",
+      "text": "Looking back it all makes sense now. It is just that first hour."
+    }
+  ],
+  "annotations": [
+    {
+      "id": "r1",
+      "segment_id": "s2",
+      "code_id": "NEXT",
+      "span": "I just did not know where to go",
+      "criteria_met": [
+        "NEXT.i1",
+        "NEXT.i2"
+      ],
+      "exclusions_considered": [
+        {
+          "id": "NEXT.x1",
+          "reason": "No access problem is mentioned."
+        },
+        {
+          "id": "NEXT.x2",
+          "reason": "There is a specific moment: the empty dashboard."
+        }
+      ],
+      "reasoning": "P1 names the moment, after the welcome screen closed, and says in plain words they did not know where to go, then describes searching the menu.",
+      "counter_reading": "This could be a general complaint about the empty dashboard design rather than a moment of not knowing.",
+      "alternatives": [
+        "WORKAROUND"
+      ]
+    },
+    {
+      "id": "bad-segment",
+      "segment_id": "s99",
+      "code_id": "NEXT",
+      "span": "did not know",
+      "criteria_met": [
+        "NEXT.i1"
+      ],
+      "exclusions_considered": [
+        {
+          "id": "NEXT.x1",
+          "reason": "n/a"
+        }
+      ],
+      "reasoning": "Cites a segment id that is not in the transcript, so the span cannot be checked at all.",
+      "counter_reading": "None offered beyond the id.",
+      "alternatives": []
+    },
+    {
+      "id": "bad-code",
+      "segment_id": "s8",
+      "code_id": "HELP",
+      "span": "it did not help much at that stage",
+      "criteria_met": [],
+      "exclusions_considered": [],
+      "reasoning": "Applies a code the codebook does not have; new codes are the researcher's decision to make.",
+      "counter_reading": "Might be NEXT.",
+      "alternatives": []
+    },
+    {
+      "id": "bad-empty-span",
+      "segment_id": "s10",
+      "code_id": "NEXT",
+      "span": "",
+      "criteria_met": [
+        "NEXT.i1"
+      ],
+      "exclusions_considered": [
+        {
+          "id": "NEXT.x2",
+          "reason": "Refers to the first hour."
+        }
+      ],
+      "reasoning": "Quotes nothing, so there is no way to see which words carry the code in this segment.",
+      "counter_reading": "Could be a summary remark.",
+      "alternatives": []
+    },
+    {
+      "id": "bad-paraphrase",
+      "segment_id": "s8",
+      "code_id": "NEXT",
+      "span": "the help centre was useless for beginners",
+      "criteria_met": [
+        "NEXT.i2"
+      ],
+      "exclusions_considered": [
+        {
+          "id": "NEXT.x2",
+          "reason": "A specific moment of looking for help."
+        }
+      ],
+      "reasoning": "Paraphrases the participant instead of quoting, so the span does not appear in the segment text.",
+      "counter_reading": "The participant was milder than this.",
+      "alternatives": []
+    },
+    {
+      "id": "bad-interviewer",
+      "segment_id": "s7",
+      "code_id": "NEXT",
+      "span": "Did you look at the help centre",
+      "criteria_met": [
+        "NEXT.i2"
+      ],
+      "exclusions_considered": [
+        {
+          "id": "NEXT.x1",
+          "reason": "No access issue."
+        }
+      ],
+      "reasoning": "Codes the interviewer's question, which describes what was asked rather than what the participant said.",
+      "counter_reading": "The question may have led the next answer.",
+      "alternatives": []
+    },
+    {
+      "id": "bad-no-criterion",
+      "segment_id": "s3",
+      "code_id": "ACCESS",
+      "span": "the button was greyed out",
+      "criteria_met": [],
+      "exclusions_considered": [
+        {
+          "id": "ACCESS.x1",
+          "reason": "They knew where it was."
+        }
+      ],
+      "reasoning": "The greyed-out button shows the right was missing, which is why setup paused for this participant.",
+      "counter_reading": "Could be a design problem.",
+      "alternatives": []
+    },
+    {
+      "id": "bad-wrong-criterion",
+      "segment_id": "s9",
+      "code_id": "ACCESS",
+      "span": "I raised a ticket with the vendor about the permissions page",
+      "criteria_met": [
+        "PEER.i1"
+      ],
+      "exclusions_considered": [
+        {
+          "id": "ACCESS.x1",
+          "reason": "Unclear from the segment."
+        }
+      ],
+      "reasoning": "Cites a criterion that belongs to another code, so the claimed fit is to the wrong definition.",
+      "counter_reading": "Vendor contact is not a colleague either.",
+      "alternatives": []
+    },
+    {
+      "id": "bad-no-exclusions",
+      "segment_id": "s5",
+      "code_id": "WORKAROUND",
+      "span": "pasted the emails in one by one",
+      "criteria_met": [
+        "WORKAROUND.i1"
+      ],
+      "exclusions_considered": [],
+      "reasoning": "Manual pasting is an improvised route, but the documented-feature exclusion was never weighed here.",
+      "counter_reading": "Manual entry may be documented.",
+      "alternatives": []
+    },
+    {
+      "id": "bad-stray-exclusion",
+      "segment_id": "s5",
+      "code_id": "WORKAROUND",
+      "span": "There is a bulk upload somewhere but I never found it",
+      "criteria_met": [
+        "WORKAROUND.i1"
+      ],
+      "exclusions_considered": [
+        {
+          "id": "WORKAROUND.x1",
+          "reason": "Bulk upload never found."
+        },
+        {
+          "id": "NEXT.x1",
+          "reason": "Borrowed from another code."
+        }
+      ],
+      "reasoning": "Considers an exclusion that belongs to another code alongside its own, which muddles the boundary check.",
+      "counter_reading": "This is closer to NEXT.",
+      "alternatives": []
+    },
+    {
+      "id": "bad-thin",
+      "segment_id": "s6",
+      "code_id": "PEER",
+      "span": "sitting next to Dana from finance",
+      "criteria_met": [
+        "PEER.i1"
+      ],
+      "exclusions_considered": [
+        {
+          "id": "PEER.x1",
+          "reason": "Colleague."
+        }
+      ],
+      "reasoning": "Colleague helped.",
+      "counter_reading": "Could be WORKAROUND.",
+      "alternatives": []
+    },
+    {
+      "id": "bad-no-counter",
+      "segment_id": "s2",
+      "code_id": "NEXT",
+      "span": "I clicked around the left menu for a while looking for something that said setup",
+      "criteria_met": [
+        "NEXT.i2"
+      ],
+      "exclusions_considered": [
+        {
+          "id": "NEXT.x2",
+          "reason": "A specific search, not a design comment."
+        }
+      ],
+      "reasoning": "P1 describes searching the menu for the next action, which is the second include criterion of the code.",
+      "counter_reading": "",
+      "alternatives": []
+    },
+    {
+      "id": "bad-alternative",
+      "segment_id": "s10",
+      "code_id": "NEXT",
+      "span": "It is just that first hour",
+      "criteria_met": [
+        "NEXT.i1"
+      ],
+      "exclusions_considered": [
+        {
+          "id": "NEXT.x2",
+          "reason": "Refers back to a moment."
+        }
+      ],
+      "reasoning": "A closing summary that points back to the first hour as the time they did not know what to do.",
+      "counter_reading": "It is a summary, not a moment.",
+      "alternatives": [
+        "CONFUSION"
+      ]
+    },
+    {
+      "id": "bad-duplicate",
+      "segment_id": "s2",
+      "code_id": "NEXT",
+      "span": "I just did not know where to go",
+      "criteria_met": [
+        "NEXT.i1",
+        "NEXT.i2"
+      ],
+      "exclusions_considered": [
+        {
+          "id": "NEXT.x1",
+          "reason": "No access problem is mentioned."
+        },
+        {
+          "id": "NEXT.x2",
+          "reason": "There is a specific moment: the empty dashboard."
+        }
+      ],
+      "reasoning": "P1 names the moment, after the welcome screen closed, and says in plain words they did not know where to go, then describes searching the menu.",
+      "counter_reading": "This could be a general complaint about the empty dashboard design rather than a moment of not knowing.",
+      "alternatives": [
+        "WORKAROUND"
+      ]
+    }
+  ]
+}

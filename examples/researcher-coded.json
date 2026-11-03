@@ -1,0 +1,235 @@
+{
+  "question": "How do first-time workspace admins make sense of initial setup?",
+  "codebook": [
+    {
+      "id": "NEXT",
+      "name": "Unclear next step",
+      "definition": "The participant describes not knowing which action the product expected of them next.",
+      "include": [
+        {
+          "id": "NEXT.i1",
+          "text": "Says they did not know what to do next or where to go"
+        },
+        {
+          "id": "NEXT.i2",
+          "text": "Describes searching the interface for the next action"
+        }
+      ],
+      "exclude": [
+        {
+          "id": "NEXT.x1",
+          "text": "Knew the next step but could not take it for lack of access (use ACCESS)"
+        },
+        {
+          "id": "NEXT.x2",
+          "text": "General comment on design with no moment of not knowing"
+        }
+      ]
+    },
+    {
+      "id": "ACCESS",
+      "name": "Waiting on access",
+      "definition": "Setup pauses because the participant needs another person to grant a right or approval.",
+      "include": [
+        {
+          "id": "ACCESS.i1",
+          "text": "Names a person or team they had to wait for"
+        },
+        {
+          "id": "ACCESS.i2",
+          "text": "Describes a request for rights, licences or approval"
+        }
+      ],
+      "exclude": [
+        {
+          "id": "ACCESS.x1",
+          "text": "Has the rights but cannot find the setting (use NEXT)"
+        }
+      ]
+    },
+    {
+      "id": "WORKAROUND",
+      "name": "Workaround",
+      "definition": "The participant reaches the goal by a route the product did not offer for it.",
+      "include": [
+        {
+          "id": "WORKAROUND.i1",
+          "text": "Describes an improvised route, tool or manual step"
+        }
+      ],
+      "exclude": [
+        {
+          "id": "WORKAROUND.x1",
+          "text": "Uses a documented feature as documented"
+        }
+      ]
+    },
+    {
+      "id": "PEER",
+      "name": "Learning from a colleague",
+      "definition": "The participant learns how setup works from another person rather than from the product.",
+      "include": [
+        {
+          "id": "PEER.i1",
+          "text": "Mentions asking, watching or copying a colleague"
+        }
+      ],
+      "exclude": [
+        {
+          "id": "PEER.x1",
+          "text": "Contact with vendor support (not a colleague)"
+        }
+      ]
+    }
+  ],
+  "transcript": [
+    {
+      "id": "s1",
+      "speaker": "INT",
+      "role": "interviewer",
+      "text": "Can you both walk me through the first hour after you created the workspace?"
+    },
+    {
+      "id": "s2",
+      "speaker": "P1",
+      "role": "participant",
+      "text": "The welcome screen was nice, but once it closed I was on an empty dashboard and I just did not know where to go. I clicked around the left menu for a while looking for something that said setup."
+    },
+    {
+      "id": "s3",
+      "speaker": "P2",
+      "role": "participant",
+      "text": "For me it was the user import. I knew exactly where it was, the button was greyed out, and I had to wait two days for our IT team to give me the admin licence."
+    },
+    {
+      "id": "s4",
+      "speaker": "INT",
+      "role": "interviewer",
+      "text": "What did you do in those two days?"
+    },
+    {
+      "id": "s5",
+      "speaker": "P2",
+      "role": "participant",
+      "text": "I kept a spreadsheet of everyone who needed an account and pasted the emails in one by one once the licence came through. There is a bulk upload somewhere but I never found it."
+    },
+    {
+      "id": "s6",
+      "speaker": "P1",
+      "role": "participant",
+      "text": "Honestly the thing that unblocked me was sitting next to Dana from finance, who had set up her team the month before. I watched her do it and copied her settings."
+    },
+    {
+      "id": "s7",
+      "speaker": "INT",
+      "role": "interviewer",
+      "text": "Did you look at the help centre at any point?"
+    },
+    {
+      "id": "s8",
+      "speaker": "P1",
+      "role": "participant",
+      "text": "I opened it once. The articles assume you already know what a space and a project are, so it did not help much at that stage."
+    },
+    {
+      "id": "s9",
+      "speaker": "P2",
+      "role": "participant",
+      "text": "I raised a ticket with the vendor about the permissions page and they answered the same day, which was good."
+    },
+    {
+      "id": "s10",
+      "speaker": "P1",
+      "role": "participant",
+      "text": "Looking back it all makes sense now. It is just that first hour."
+    }
+  ],
+  "annotations": [
+    {
+      "id": "r1",
+      "segment_id": "s2",
+      "code_id": "NEXT",
+      "span": "I just did not know where to go",
+      "criteria_met": [
+        "NEXT.i1",
+        "NEXT.i2"
+      ],
+      "exclusions_considered": [
+        {
+          "id": "NEXT.x1",
+          "reason": "No access problem is mentioned."
+        },
+        {
+          "id": "NEXT.x2",
+          "reason": "There is a specific moment: the empty dashboard."
+        }
+      ],
+      "reasoning": "P1 names the moment, after the welcome screen closed, and says in plain words they did not know where to go, then describes searching the menu.",
+      "counter_reading": "This could be a general complaint about the empty dashboard design rather than a moment of not knowing.",
+      "alternatives": [
+        "WORKAROUND"
+      ]
+    },
+    {
+      "id": "r2",
+      "segment_id": "s3",
+      "code_id": "ACCESS",
+      "span": "I had to wait two days for our IT team to give me the admin licence",
+      "criteria_met": [
+        "ACCESS.i1",
+        "ACCESS.i2"
+      ],
+      "exclusions_considered": [
+        {
+          "id": "ACCESS.x1",
+          "reason": "P2 says they knew where the import was; the right was missing."
+        }
+      ],
+      "reasoning": "P2 knew where the import was and could not use it until IT granted a licence, which names both the team and the rights request.",
+      "counter_reading": "The greyed-out button might also mean the control was unclear, not only that access was missing.",
+      "alternatives": [
+        "NEXT"
+      ]
+    },
+    {
+      "id": "r3",
+      "segment_id": "s5",
+      "code_id": "WORKAROUND",
+      "span": "I kept a spreadsheet of everyone who needed an account and pasted the emails in one by one",
+      "criteria_met": [
+        "WORKAROUND.i1"
+      ],
+      "exclusions_considered": [
+        {
+          "id": "WORKAROUND.x1",
+          "reason": "P2 says they never found the bulk upload, so this is not the documented route."
+        }
+      ],
+      "reasoning": "A spreadsheet and manual pasting is an improvised route to the goal of adding users while the bulk path stayed hidden.",
+      "counter_reading": "Manual entry may be a documented option for small teams, in which case it is ordinary use.",
+      "alternatives": [
+        "NEXT"
+      ]
+    },
+    {
+      "id": "r4",
+      "segment_id": "s6",
+      "code_id": "PEER",
+      "span": "I watched her do it and copied her settings",
+      "criteria_met": [
+        "PEER.i1"
+      ],
+      "exclusions_considered": [
+        {
+          "id": "PEER.x1",
+          "reason": "Dana is a colleague in finance, not vendor support."
+        }
+      ],
+      "reasoning": "P1 says a colleague's own setup unblocked them, and describes watching and copying it rather than learning from the product.",
+      "counter_reading": "Copying settings could also be read as a workaround, since it bypasses whatever path the product offers.",
+      "alternatives": [
+        "WORKAROUND"
+      ]
+    }
+  ]
+}

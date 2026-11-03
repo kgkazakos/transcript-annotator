@@ -1,0 +1,147 @@
+{
+  "question": "How do first-time workspace admins make sense of initial setup?",
+  "codebook": [
+    {
+      "id": "NEXT",
+      "name": "Unclear next step",
+      "definition": "The participant describes not knowing which action the product expected of them next.",
+      "include": [
+        {
+          "id": "NEXT.i1",
+          "text": "Says they did not know what to do next or where to go"
+        },
+        {
+          "id": "NEXT.i2",
+          "text": "Describes searching the interface for the next action"
+        }
+      ],
+      "exclude": [
+        {
+          "id": "NEXT.x1",
+          "text": "Knew the next step but could not take it for lack of access (use ACCESS)"
+        },
+        {
+          "id": "NEXT.x2",
+          "text": "General comment on design with no moment of not knowing"
+        }
+      ]
+    },
+    {
+      "id": "ACCESS",
+      "name": "Waiting on access",
+      "definition": "Setup pauses because the participant needs another person to grant a right or approval.",
+      "include": [
+        {
+          "id": "ACCESS.i1",
+          "text": "Names a person or team they had to wait for"
+        },
+        {
+          "id": "ACCESS.i2",
+          "text": "Describes a request for rights, licences or approval"
+        }
+      ],
+      "exclude": [
+        {
+          "id": "ACCESS.x1",
+          "text": "Has the rights but cannot find the setting (use NEXT)"
+        }
+      ]
+    },
+    {
+      "id": "WORKAROUND",
+      "name": "Workaround",
+      "definition": "The participant reaches the goal by a route the product did not offer for it.",
+      "include": [
+        {
+          "id": "WORKAROUND.i1",
+          "text": "Describes an improvised route, tool or manual step"
+        }
+      ],
+      "exclude": [
+        {
+          "id": "WORKAROUND.x1",
+          "text": "Uses a documented feature as documented"
+        }
+      ]
+    },
+    {
+      "id": "PEER",
+      "name": "Learning from a colleague",
+      "definition": "The participant learns how setup works from another person rather than from the product.",
+      "include": [
+        {
+          "id": "PEER.i1",
+          "text": "Mentions asking, watching or copying a colleague"
+        }
+      ],
+      "exclude": [
+        {
+          "id": "PEER.x1",
+          "text": "Contact with vendor support (not a colleague)"
+        }
+      ]
+    }
+  ],
+  "transcript": [
+    {
+      "id": "t1",
+      "speaker": "INT",
+      "role": "interviewer",
+      "text": "So I want to understand setup, and I'm wondering, would you say that it was confusing, or maybe more that it was slow, or perhaps that the permissions were the hard part, because other people told us it was confusing? So I want to understand setup, and I'm wondering, would you say that it was confusing, or maybe more that it was slow, or perhaps that the permissions were the hard part, because other people told us it was confusing? So I want to understand setup, and I'm wondering, would you say that it was confusing, or maybe more that it was slow, or perhaps that the permissions were the hard part, because other people told us it was confusing? So I want to understand setup, and I'm wondering, would you say that it was confusing, or maybe more that it was slow, or perhaps that the permissions were the hard part, because other people told us it was confusing? So I want to understand setup, and I'm wondering, would you say that it was confusing, or maybe more that it was slow, or perhaps that the permissions were the hard part, because other people told us it was confusing? So I want to understand setup, and I'm wondering, would you say that it was confusing, or maybe more that it was slow, or perhaps that the permissions were the hard part, because other people told us it was confusing? So I want to understand setup, and I'm wondering, would you say that it was confusing, or maybe more that it was slow, or perhaps that the permissions were the hard part, because other people told us it was confusing?"
+    },
+    {
+      "id": "t2",
+      "speaker": "P1",
+      "role": "participant",
+      "text": "Confusing, I suppose.",
+      "_cpr_synthetic": {
+        "tool": "interview-simulator",
+        "version": "0.3.0",
+        "model": "example/model",
+        "human_grounding": "none",
+        "ancestry": []
+      }
+    },
+    {
+      "id": "t2",
+      "speaker": "P1",
+      "role": "participant",
+      "text": "Yes, the permissions too.",
+      "_cpr_synthetic": {
+        "tool": "interview-simulator",
+        "version": "0.3.0",
+        "model": "example/model",
+        "human_grounding": "none",
+        "ancestry": []
+      }
+    },
+    {
+      "speaker": "P1",
+      "role": "participant",
+      "text": "Mostly the first part."
+    },
+    {
+      "id": "t4",
+      "speaker": "",
+      "role": "",
+      "text": ""
+    },
+    {
+      "id": "t5",
+      "speaker": "P1",
+      "role": "participant",
+      "text": "Then we planned the rollout team by team.",
+      "_cpr_synthetic": {
+        "tool": "interview-simulator",
+        "version": "0.3.0",
+        "model": "example/model",
+        "human_grounding": "partial",
+        "ancestry": [
+          {
+            "text": "field note"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "reviews": [
+    {
+      "annotation_id": "r1",
+      "decision": "accept",
+      "note": "Clear moment, criteria fit."
+    },
+    {
+      "annotation_id": "bad-paraphrase",
+      "decision": "accept"
+    },
+    {
+      "annotation_id": "bad-code",
+      "decision": "reject",
+      "note": "No such code; consider NEXT."
+    },
+    {
+      "annotation_id": "bad-interviewer",
+      "decision": "reject"
+    },
+    {
+      "annotation_id": "bad-thin",
+      "decision": "revise"
+    },
+    {
+      "annotation_id": "bad-thin",
+      "decision": "revise",
+      "note": "Ask for the reasoning in full."
+    },
+    {
+      "annotation_id": "m7",
+      "decision": "accept",
+      "note": "From an older run."
+    }
+  ]
+}

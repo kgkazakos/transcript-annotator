@@ -36,6 +36,6 @@ jobs:
         run: |
           tan --version
           tan paradigm
-          tan run examples/sample.json --no-llm
-          tan export examples/sample.json --no-llm -o /tmp/out.json
+          tan run examples/researcher-coded.json --no-llm
+          tan export examples/researcher-coded.json --no-llm -o /tmp/out.json
           python -c "import json; d=json.load(open('/tmp/out.json')); assert d['schema']=='cpr.tan.export/1'"
