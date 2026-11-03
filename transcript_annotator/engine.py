@@ -497,3 +497,34 @@ def analyze(
         prompts=deliberation_prompts(study, annotations),
         synthetic_share=synthetic_share(study.transcript),
     )
+
+
+MODEL_UNAVAILABLE = "model unavailable"
+
+
+def build_report(
+    doc: dict[str, Any],
+    no_llm: bool = False,
+    model: Optional[str] = None,
+    batch_size: Optional[int] = None,
+    reviews: Optional[list[Review]] = None,
+    thresholds: Thresholds = Thresholds(),
+) -> Report:
+    """The full run: model annotations (unless --no-llm), verified by the deterministic core.
+
+    On any model failure or unparseable reply, returns the --no-llm report plus a visible note.
+    """
+    if no_llm:
+        return analyze(doc, reviews=reviews, thresholds=thresholds)
+    from .llm import DEFAULT_BATCH_SIZE, annotate, resolve_model
+
+    try:
+        result = annotate(doc, model=model, batch_size=batch_size or DEFAULT_BATCH_SIZE)
+    except Exception as exc:  # graceful degradation: the deterministic report stands
+        report = analyze(doc, reviews=reviews, thresholds=thresholds)
+        report.model_note = f"{MODEL_UNAVAILABLE} ({resolve_model(model)}: {type(exc).__name__}). Showing the --no-llm report."
+        return report
+    report = analyze(doc, model_annotations=result.annotations, reviews=reviews, thresholds=thresholds)
+    report.enrichment = {"model": result.model, "batches": result.batches,
+                         "annotations": len(result.annotations), "no_code": result.no_code}
+    return report
