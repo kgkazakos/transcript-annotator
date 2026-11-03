@@ -5,15 +5,20 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass, field
 from typing import Any, Optional
 
-TOOL_NAME = "cpr-tool"  # TEMPLATE: set to the tool slug
-EXPORT_SCHEMA = "cpr.tool.export/1"  # TEMPLATE: cpr.<abbrev>.export/1
+TOOL_NAME = "transcript-annotator"
+EXPORT_SCHEMA = "cpr.tan.export/1"
 
-AI_PARADIGM = "Rule-based"  # TEMPLATE: the roadmap's primary paradigm
+AI_PARADIGM = "LLM (reasoning)"
 AI_PARADIGM_RATIONALE = (
-    # TEMPLATE: one paragraph on why this paradigm fits this research task.
-    "This skeleton uses a deterministic rule-based core so that every finding is "
-    "reproducible and auditable without a model. Replace this paragraph with the "
-    "methodological case for the tool's own paradigm."
+    "Qualitative coding fails quietly when codes arrive without their reasons: a list of "
+    "labels hides whether the coder applied the codebook's criteria, read the segment in "
+    "context, or matched on a keyword. Slow annotation asks a reasoning model to spend "
+    "deliberate compute on each segment and to show its work per code: the exact span, the "
+    "codebook criterion it meets, the exclusion criteria it considered, a counter-reading and "
+    "the alternative codes it rejected. That is interpretive reasoning against a "
+    "researcher-authored codebook, not classification, so a reasoning model fits. The "
+    "deterministic layer checks every annotation against the transcript and the codebook, "
+    "and the researcher reviews the reasoning, not just the codes."
 )
 
 SEVERITIES = ("high", "medium", "low")

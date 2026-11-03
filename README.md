@@ -1,4 +1,4 @@
-# cpr-tool
+# transcript-annotator
 
 TEMPLATE: one-line tagline. What the tool is, in one sentence.
 
@@ -26,7 +26,7 @@ TEMPLATE: paradigm name.
 TEMPLATE: the rationale paragraph, identical to `AI_PARADIGM_RATIONALE`: why this paradigm
 fits this research task.
 
-Run `cpr-tool paradigm` to print this at the tool level.
+Run `tan paradigm` to print this at the tool level.
 
 ## No synthetic data, no Provenance Hash
 
@@ -49,10 +49,10 @@ backend the tool degrades gracefully to the deterministic core.
 ## CLI
 
 ```bash
-cpr-tool run examples/sample.json             # deterministic core + AI layer
-cpr-tool run examples/sample.json --no-llm    # deterministic core only
-cpr-tool export examples/sample.json -o out.json  # versioned JSON (cpr.tool.export/1)
-cpr-tool paradigm                             # paradigm + rationale
+tan run examples/sample.json             # deterministic core + AI layer
+tan run examples/sample.json --no-llm    # deterministic core only
+tan export examples/sample.json -o out.json  # versioned JSON (cpr.tan.export/1)
+tan paradigm                             # paradigm + rationale
 ```
 
 Every command that can call a model accepts `--no-llm` and `--model`.
@@ -60,7 +60,7 @@ Every command that can call a model accepts `--no-llm` and `--model`.
 ## Streamlit
 
 ```bash
-streamlit run cpr_tool/app.py
+streamlit run transcript_annotator/app.py
 ```
 
 TEMPLATE: Frame X visual language: accent name `#hex`, DM Sans and DM Mono, three-column
@@ -89,7 +89,7 @@ See `examples/` for TEMPLATE: what each example demonstrates.
 - Rule-based deterministic core, additive AI layer, graceful degradation.
 - `paradigm` command and `--no-llm` flag, per the Phase II conventions.
 - pytest suite, CI on Python 3.10, 3.11, 3.12.
-- Versioned export `cpr.tool.export/1`.
+- Versioned export `cpr.tan.export/1`.
 
 ## IP
 

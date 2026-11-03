@@ -1,5 +1,5 @@
-from cpr_tool.engine import analyze
-from cpr_tool.models import Finding
+from transcript_annotator.engine import analyze
+from transcript_annotator.models import Finding
 
 import pytest
 

@@ -3,8 +3,8 @@ from pathlib import Path
 
 from click.testing import CliRunner
 
-from cpr_tool.cli import main
-from cpr_tool.models import AI_PARADIGM, EXPORT_SCHEMA
+from transcript_annotator.cli import main
+from transcript_annotator.models import AI_PARADIGM, EXPORT_SCHEMA
 
 EXAMPLE = str(Path(__file__).resolve().parent.parent / "examples" / "sample.json")
 

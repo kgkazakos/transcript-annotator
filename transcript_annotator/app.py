@@ -1,4 +1,4 @@
-"""Streamlit UI. Run: streamlit run cpr_tool/app.py"""
+"""Streamlit UI. Run: streamlit run transcript_annotator/app.py"""
 
 from __future__ import annotations
 
@@ -13,11 +13,11 @@ _ROOT = Path(__file__).resolve().parent.parent
 if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
 
-from cpr_tool import __version__  # noqa: E402  TEMPLATE: rename package
-from cpr_tool.engine import analyze  # noqa: E402
-from cpr_tool.models import AI_PARADIGM, AI_PARADIGM_RATIONALE, TOOL_NAME  # noqa: E402
+from transcript_annotator import __version__  # noqa: E402
+from transcript_annotator.engine import analyze  # noqa: E402
+from transcript_annotator.models import AI_PARADIGM, AI_PARADIGM_RATIONALE, TOOL_NAME  # noqa: E402
 
-ACCENT = "#4f3d8f"  # TEMPLATE: frame accent, keep in sync with .streamlit/config.toml
+ACCENT = "#4f3d8f"  # Frame A violet, keep in sync with .streamlit/config.toml
 CHIP = {"high": "#9b2c2c", "medium": "#b7791f", "low": "#4a5568"}
 
 st.set_page_config(page_title=TOOL_NAME, layout="wide")
