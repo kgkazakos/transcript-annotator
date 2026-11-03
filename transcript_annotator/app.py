@@ -181,6 +181,15 @@ with main:
     prompts = {p["segment_id"]: p["prompt"] for p in report.prompts}
     reviews: list[Review] = []
 
+    def review_control(annotation_id: str) -> None:
+        c1, c2 = st.columns([1, 2.5])
+        decision = c1.radio("Your review", ["not yet", "accept", "revise", "reject"], horizontal=True,
+                            key=f"d-{choice}-{annotation_id}", label_visibility="collapsed")
+        note = c2.text_input("Note", key=f"n-{choice}-{annotation_id}", placeholder="Review note (why)",
+                             label_visibility="collapsed")
+        if decision != "not yet":
+            reviews.append(Review(annotation_id, decision, note.strip()))
+
     known = {s.id for s in study.transcript}
     for s in study.transcript:
         anns = by_segment.get(s.id, [])
@@ -218,13 +227,7 @@ with main:
                 + "</div>",
                 unsafe_allow_html=True,
             )
-            c1, c2 = st.columns([1, 2.5])
-            decision = c1.radio("Your review", ["not yet", "accept", "revise", "reject"], horizontal=True,
-                                key=f"d-{choice}-{a.id}", label_visibility="collapsed")
-            note = c2.text_input("Note", key=f"n-{choice}-{a.id}", placeholder="Review note (why)",
-                                 label_visibility="collapsed")
-            if decision != "not yet":
-                reviews.append(Review(a.id, decision, note.strip()))
+            review_control(a.id)
     stray = [v for v in report.annotations if v.annotation.segment_id not in known]
     if stray:
         st.markdown("**Annotations on segments not in the transcript**")
@@ -234,6 +237,7 @@ with main:
                     f"{esc(a.code_id)}</span> &ldquo;{esc(a.span)}&rdquo;<div class='field'>"
                     + "".join(chip(f.rule_id, CHIP[f.severity]) for f in v.findings) + "</div></div>",
                     unsafe_allow_html=True)
+        review_control(a.id)
 
     st.markdown("#### Your review")
     report.review = check_reviews(report.annotations, reviews) if report.annotations else []
